@@ -6,12 +6,15 @@ chiffres = "1234567890"
 symboles = "/\*&@#$%?!-_"
 
 use = lettre_minuscule + lettre_majuscule + chiffres + symboles
-taille_mdp = 28 #taille de votre mot de passe
+raw_taille_mdp = input("\nTaille de votre mot de passe ( Min:1, Max:74 ): ")
 
-password = "".join(random.sample(use, taille_mdp))
-
-print("Votre mot de passe : " + password) 
+try:
+    taille_mdp = int(raw_taille_mdp)
+    password = "".join(random.sample(use, taille_mdp))
+    print("Votre mot de passe : " + password)
+except ValueError:
+    print("\nVous n'avez pas saisi un nombre valide Ex: 28")
+    exit()
 
 #github
-x=input("\nGithub: https://github.com/GabziDev")
-print(x)
+print("\nGithub: https://github.com/GabziDev")
