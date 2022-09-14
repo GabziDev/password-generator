@@ -1,23 +1,25 @@
 import random
 import time
+from string import ascii_letters, digits
 
-lettre_minuscule = "qwertzuiopasdfghjklyxcvbnm"
-lettre_majuscule = "QWERTZUIOPASDFGHJKLYXCVBNM"
-chiffres = "1234567890"
-symboles = "/\*&@#$%?!-_"
+symbols = "/\*&@#$%?!-_"
 
-use = lettre_minuscule + lettre_majuscule + chiffres + symboles
-raw_taille_mdp = input("\n\n[1]  Taille de votre mot de passe [Min:1, Max:74]: ")
+use = ascii_letters + digits + symbols
+raw_length = input("\n[1] Taille de votre mot de passe [Min:1, Max:74]: >>>")
 
-try:
-    taille_mdp = int(raw_taille_mdp)
-    password = "".join(random.sample(use, taille_mdp))
-    print("\n\n[2]  Votre mot de passe :\n\n" + password)
-except ValueError:
+if raw_length.isdigit():
+    length = int(raw_length)
+else:
     print("\n[ /!\ ] Vous n'avez pas saisi un nombre valide [Min:1, Max:74]")
     time.sleep(2.5)
     exit()
 
+if 0 < length < 65:
+    password = "".join([random.choice(use) for _ in range(length)])
+    print("\n\n[2]  Votre mot de passe :\n\n" + password)
+else:
+    print("\n[ /!\ ] Vous n'avez pas saisi un nombre valide [Min:1, Max:74]")
+    time.sleep(2.5)
+    exit()
 #github
-x=input("\n\n\n\n> Github: github.com/GabziDev")
-print(x) 
+print("\n> Github: github.com/GabziDev")
